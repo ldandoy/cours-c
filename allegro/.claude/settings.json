@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gcc \"c:/Users/ldand/Desktop/cours-c/allegro/main_de_base.c\" -o \"c:/Users/ldand/Desktop/cours-c/allegro/main_de_base\")",
+      "Bash(allegro-config --libs)",
+      "Bash(pkg-config --libs allegro)",
+      "Read(//c//**)",
+      "Read(//c/msys64/mingw64/**)",
+      "Read(//c/msys64/mingw32/**)",
+      "Bash(where gcc:*)",
+      "Bash(gcc --version)",
+      "Bash(gcc \"c:/Users/ldand/Desktop/cours-c/allegro/main_de_base.c\" -o \"c:/Users/ldand/Desktop/cours-c/allegro/main_de_base.exe\" -lalleg44)",
+      "Bash(gcc \"c:/Users/ldand/Desktop/cours-c/allegro/hello_world.c\" -o \"c:/Users/ldand/Desktop/cours-c/allegro/hello_world.exe\" -lalleg44)"
+    ]
+  }
+}

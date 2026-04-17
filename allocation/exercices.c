@@ -81,3 +81,76 @@ int main(void) {
 Transformer le code précedent en utilisant une fonction pour
 effectuer la somme avec un return.
 */
+
+// Exercice 4 — Tableau dynamique d’entiers
+/*
+Écrire un programme en C qui :
+Demande à l’utilisateur combien de valeurs il souhaite saisir (N > 0).
+Alloue dynamiquement un tableau de N entiers.
+Saisit les N valeurs dans le tableau.
+Calcule et affiche :
+la somme,
+la moyenne.
+Libère la mémoire allouée.
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void) {
+    int n;
+    int *tab;
+    int somme = 0;
+
+    // Saisie de la taille
+    do {
+        printf("Combien de valeurs ? ");
+        scanf("%d", &n);
+    } while (n <= 0);
+
+    // Allocation dynamique du tableau
+    tab = (int *)malloc(n * sizeof(int));
+
+    if (tab == NULL) {
+        printf("Erreur d'allocation memoire.\n");
+        return 1;
+    }
+
+    // Saisie des valeurs
+    for (int i = 0; i < n; i++) {
+        printf("Valeur %d : ", i + 1);
+        scanf("%d", &tab[i]);
+        somme += tab[i];
+    }
+
+    // Calcul et affichage
+    printf("Somme : %d\n", somme);
+    printf("Moyenne : %.2f\n", (float)somme / n);
+
+    // Liberation de la memoire
+    free(tab);
+
+    return 0;
+}
+
+// A retenir
+/*
+malloc()
+malloc signifie memory allocation. Elle réserve un bloc de mémoire 
+contigu d’une taille donnée, exprimée en octets.
+
+calloc()
+calloc (contiguous allocation) fonctionne comme malloc, mais avec 
+deux différences :
+— elle alloue la mémoire pour plusieurs éléments à la fois ;
+— elle initialise tout à zéro.
+
+void *realloc(void *ptr, size_t nouvelleTaille);
+realloc permet de redimensionner un bloc alloué par malloc ou 
+calloc. Elle est utile lorsqu’on souhaite agrandir ou réduire un 
+tableau en cours d’exécution.
+
+void free(void *ptr);
+free() libère un bloc mémoire précédemment alloué. Elle rend 
+l’espace au système d’exploitation pour qu’il puisse être réutilisé.
+*/

@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     char filename[100];
     int i;
     int x = 200, y = 500;
-    int vitesse = 3;
+    int vitesse = 3, vitesseB = 3;
     int frame = 0;        /* frame courante */
     int compteur = 0;     /* ralentir l'animation */
     int direction = 1;    /* 1 = droite, -1 = gauche */
@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
     int bleu;
     int bx1 = 700, by1 = 530, bx2 = 750, by2 = 580;
 
-    
+    srand(time(NULL));
 
     allegro_init();
     install_keyboard();
@@ -58,8 +58,8 @@ int main(int argc, char *argv[])
 
     bleu = makecol(0, 0, 200);
     couleur[0] = makecol(100, 20, 200);
-    couleur[2] = makecol(255, 0, 120);
-    couleur[3] = makecol(40, 120, 0);
+    couleur[1] = makecol(255, 0, 120);
+    couleur[2] = makecol(40, 120, 0);
     
     buffer = create_bitmap(800, 600);
 
@@ -127,9 +127,11 @@ int main(int argc, char *argv[])
 
         
         if (bx1 > 0) {
-            bx1 -= vitesse;
-            bx2 -= vitesse;
+            bx1 -= vitesseB;
+            bx2 -= vitesseB;
         } else {
+            bleu = couleur[rand() % 2 + 0];
+            vitesseB = rand() % 9 + 3;
             bx1 = 750;
             bx2 = 800;
         }
